@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Hologram
+providerId: hologram
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- IoT
+- Cellular
+- Connectivity
+- SIM
+- M2M
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Hologram REST API enforces per-account rate limiting. When the limit is
+  exceeded the API returns HTTP 429 with an "API rate limit exceeded" error
+  message. Specific request-per-minute thresholds are not published in the
+  public API reference and are not reconciled in this artifact. Pagination via
+  `limit`, `startafter`, and `continues` is used to bound large list
+  responses.
+notes: >-
+  Confirm exact request-per-minute thresholds with Hologram support during
+  reconciliation; published documentation states only that exceeding limits
+  returns 429.
+sources:
+- https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+- https://hologram.docs.apiary.io/
+responseCodes:
+  throttled: 429
+limits:
+- name: API Requests
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Exceeding the limit returns HTTP 429 with "API rate limit exceeded".
+- name: List Pagination
+  scope: request
+  metric: records
+  limit: bounded by limit parameter
+  notes: List endpoints page with limit / startafter and a continues flag rather than returning unbounded results.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on HTTP 429 responses.
+- name: Pagination
+  description: Use the limit and startafter parameters and the continues flag to page through large result sets.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

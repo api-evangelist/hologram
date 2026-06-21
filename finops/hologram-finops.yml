@@ -1,0 +1,98 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Hologram
+providerId: hologram
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- IoT
+- Cellular
+- Connectivity
+- SIM
+- M2M
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Hologram connectivity spend. Hologram bills usage-based per-MB
+  data charges, a flat monthly recurring charge per active SIM, a one-time
+  per-SIM card cost, and per-message outbound SMS charges. Custom plans apply
+  discounted volume rates, data pools, and zero fees for inactive SIMs.
+notes: >-
+  Rates are subject to change and Custom plan rates are negotiated; verify
+  against the Hologram pricing page during reconciliation.
+sources:
+- https://www.hologram.io/pricing/
+- https://docs.hologram.io/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Hologram
+serviceCategory: IoT and Connectivity
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Hologram Connectivity
+  ServiceCategory: IoT and Connectivity
+  ProviderName: Hologram
+  PublisherName: Hologram
+  InvoiceIssuerName: Hologram
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: data_megabytes
+  description: Cellular data consumed by devices, billed per MB.
+  unit: megabytes
+  aggregation: sum
+  dimensions:
+  - account
+  - organization
+  - link
+  - zone
+- name: sim_monthly_active
+  description: Active SIMs billed a flat monthly recurring charge.
+  unit: sims
+  aggregation: count
+  dimensions:
+  - account
+  - organization
+- name: sim_card_purchase
+  description: One-time per-SIM card cost at purchase.
+  unit: sims
+  aggregation: count
+  dimensions:
+  - account
+  - organization
+- name: sms_outbound
+  description: Outbound SMS messages sent to devices, billed per message (inbound free).
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - organization
+  - link
+principles:
+- name: Visibility
+  description: Pull data and SMS usage via /usage/data and /usage/sms; inspect per-SIM and per-tag consumption.
+- name: Allocation
+  description: Group SIMs with device tags and per-organization scoping to map spend to teams or deployments.
+- name: Optimization
+  description: Set overage and data thresholds per SIM, pause idle SIMs, and use Custom plan data pools and inactive-SIM fee waivers for large fleets.
+- name: Accountability
+  description: Assign organization owners and review monthly per-SIM data and SMS spend against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,110 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Hologram
+providerId: hologram
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- IoT
+- Cellular
+- Connectivity
+- SIM
+- M2M
+- Plans
+description: >-
+  Hologram offers a usage-based Self-Service plan with transparent
+  pay-as-you-go pricing - data billed per MB, a flat monthly recurring charge
+  per active SIM, a one-time SIM card cost, and per-message outbound SMS - plus
+  a Custom plan with discounted volume rates, data pools, and zero fees for
+  inactive SIMs negotiated with sales. There is no free monthly tier, though
+  free test data is provided for newly activated SIMs.
+notes: >-
+  Rates reflect the published Hologram Self-Service pricing as of the
+  modified date; verify current rates on the Hologram pricing page during
+  reconciliation. Custom plan rates are not public.
+sources:
+- https://www.hologram.io/pricing/
+- https://docs.hologram.io/
+plans:
+- id: hologram-self-service
+  name: Self-Service
+  type: usage
+  description: >-
+    Transparent pay-as-you-go cellular connectivity with dashboard and REST
+    API access, free test data, and basic fleet management, billed per MB of
+    data plus a monthly per-SIM charge.
+  entries:
+  - label: Data
+    name: data
+    type: usage
+    metric: megabytes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.03 per MB
+    userMultiplied: false
+  - label: Monthly SIM Fee
+    name: sim_monthly
+    type: recurring
+    metric: sims
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $1.00 per SIM per month
+    userMultiplied: true
+  - label: SIM Card
+    name: sim_card
+    type: flat
+    metric: sims
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: $3.00 per SIM card (one-time)
+    userMultiplied: true
+  - label: Outbound SMS
+    name: sms_outbound
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.19 per outbound SMS (inbound free)
+    userMultiplied: false
+  elements:
+  - name: Global Cellular Data
+  - name: REST API Access
+  - name: Dashboard
+  - name: Free Test Data
+- id: hologram-custom
+  name: Custom
+  type: enterprise
+  description: >-
+    Volume-based plan with discounted data rates, flexible multi-year prepaid
+    options, data pools, custom network configurations, and zero fees for
+    inactive SIMs. Contact Hologram sales.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Discounted Data Rates
+  - name: Data Pools
+  - name: Zero Fees for Inactive SIMs
+  - name: Custom Network Configurations
+  - name: Multi-Year Prepaid
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

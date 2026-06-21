@@ -1,0 +1,269 @@
+{
+  "info": {
+    "name": "Hologram REST API",
+    "description": "REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), query data and SMS usage, send SMS and cloud messages, manage tags, and read data plans. Authenticated with HTTP Basic auth (username apikey, API key as password).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "apikey", "type": "string" },
+      { "key": "password", "value": "{{apiKey}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://dashboard.hologram.io/api/1" }
+  ],
+  "item": [
+    {
+      "name": "Devices",
+      "item": [
+        {
+          "name": "List devices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/devices", "host": ["{{baseUrl}}"], "path": ["devices"] },
+            "description": "Retrieve a list of devices, optionally filtered by organization, tag, SIM, name, type, or IMEI."
+          }
+        },
+        {
+          "name": "Retrieve a device",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/devices/:deviceid", "host": ["{{baseUrl}}"], "path": ["devices", ":deviceid"], "variable": [{ "key": "deviceid", "value": "" }] },
+            "description": "Retrieve a specific device by id."
+          }
+        },
+        {
+          "name": "Update a device",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"<string>\",\n  \"tunnelable\": true\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/:deviceid", "host": ["{{baseUrl}}"], "path": ["devices", ":deviceid"], "variable": [{ "key": "deviceid", "value": "" }] },
+            "description": "Update the device name, owning organization, or tunnelable flag."
+          }
+        },
+        {
+          "name": "Pause or unpause device data",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"state\": \"pause\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/:deviceid/state", "host": ["{{baseUrl}}"], "path": ["devices", ":deviceid", "state"], "variable": [{ "key": "deviceid", "value": "" }] },
+            "description": "Pause or unpause data for a device (state pause or live)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cellular Links",
+      "item": [
+        {
+          "name": "List cellular links (SIMs)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/links/cellular", "host": ["{{baseUrl}}"], "path": ["links", "cellular"] },
+            "description": "Retrieve cellular links, optionally filtered by organization, SIM, MSISDN, IMSI, or device."
+          }
+        },
+        {
+          "name": "Retrieve a cellular link",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/links/cellular/:linkid", "host": ["{{baseUrl}}"], "path": ["links", "cellular", ":linkid"], "variable": [{ "key": "linkid", "value": "" }] },
+            "description": "Retrieve a specific cellular link by id."
+          }
+        },
+        {
+          "name": "Activate (claim) a SIM",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"plan\": 0,\n  \"zone\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/links/cellular/sim_:iccid/claim", "host": ["{{baseUrl}}"], "path": ["links", "cellular", "sim_:iccid", "claim"], "variable": [{ "key": "iccid", "value": "" }] },
+            "description": "Activate a single SIM by ICCID onto a data plan and zone."
+          }
+        },
+        {
+          "name": "Activate (claim) multiple SIMs in bulk",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"sims\": [\"<string>\"],\n  \"plan\": 0,\n  \"zone\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/links/cellular/bulkclaim", "host": ["{{baseUrl}}"], "path": ["links", "cellular", "bulkclaim"] },
+            "description": "Activate multiple SIMs in bulk by list or range."
+          }
+        },
+        {
+          "name": "Pause or unpause a SIM",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"state\": \"pause\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/links/cellular/:linkid/state", "host": ["{{baseUrl}}"], "path": ["links", "cellular", ":linkid", "state"], "variable": [{ "key": "linkid", "value": "" }] },
+            "description": "Pause or unpause a SIM profile (state pause or live)."
+          }
+        },
+        {
+          "name": "Change a SIM data plan",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"planid\": 0,\n  \"zone\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/links/cellular/:linkid/changeplan", "host": ["{{baseUrl}}"], "path": ["links", "cellular", ":linkid", "changeplan"], "variable": [{ "key": "linkid", "value": "" }] },
+            "description": "Change the data plan and zone for a SIM."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "item": [
+        {
+          "name": "List device tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/devices/tags", "host": ["{{baseUrl}}"], "path": ["devices", "tags"] },
+            "description": "List device tags for an organization."
+          }
+        },
+        {
+          "name": "Create a device tag",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/tags", "host": ["{{baseUrl}}"], "path": ["devices", "tags"] },
+            "description": "Create a new device tag."
+          }
+        },
+        {
+          "name": "Delete a device tag",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/devices/tags/:tagid", "host": ["{{baseUrl}}"], "path": ["devices", "tags", ":tagid"], "variable": [{ "key": "tagid", "value": "" }] },
+            "description": "Delete a device tag."
+          }
+        },
+        {
+          "name": "Link a tag to devices",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceids\": [0]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/tags/:tagid/link", "host": ["{{baseUrl}}"], "path": ["devices", "tags", ":tagid", "link"], "variable": [{ "key": "tagid", "value": "" }] },
+            "description": "Add a tag to one or more devices."
+          }
+        },
+        {
+          "name": "Unlink a tag from devices",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceids\": [0]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/tags/:tagid/unlink", "host": ["{{baseUrl}}"], "path": ["devices", "tags", ":tagid", "unlink"], "variable": [{ "key": "tagid", "value": "" }] },
+            "description": "Remove a tag from one or more devices."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usage",
+      "item": [
+        {
+          "name": "List data usage sessions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage/data", "host": ["{{baseUrl}}"], "path": ["usage", "data"] },
+            "description": "List recent cellular data usage sessions."
+          }
+        },
+        {
+          "name": "Daily data usage summaries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage/data/daily", "host": ["{{baseUrl}}"], "path": ["usage", "data", "daily"] },
+            "description": "Retrieve daily data usage summaries."
+          }
+        },
+        {
+          "name": "List device-originated SMS usage",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/usage/sms", "host": ["{{baseUrl}}"], "path": ["usage", "sms"] },
+            "description": "List device-originated SMS usage records."
+          }
+        }
+      ]
+    },
+    {
+      "name": "SMS & Messaging",
+      "item": [
+        {
+          "name": "Send an SMS to devices",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceids\": [0],\n  \"body\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/sms/incoming", "host": ["{{baseUrl}}"], "path": ["sms", "incoming"] },
+            "description": "Send an SMS message to one or more devices."
+          }
+        },
+        {
+          "name": "Send a cloud message to devices",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceids\": [0],\n  \"protocol\": \"TCP\",\n  \"port\": 0,\n  \"data\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/messages", "host": ["{{baseUrl}}"], "path": ["devices", "messages"] },
+            "description": "Send a TCP or UDP cloud message to one or more devices."
+          }
+        },
+        {
+          "name": "Send a message to a device via a webhook GUID",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": \"<string>\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/devices/messages/:deviceid/:webhookguid", "host": ["{{baseUrl}}"], "path": ["devices", "messages", ":deviceid", ":webhookguid"], "variable": [{ "key": "deviceid", "value": "" }, { "key": "webhookguid", "value": "" }] },
+            "description": "Pre-authenticated inbound webhook endpoint that delivers a message to a device by id and webhook GUID. No API key required."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plans",
+      "item": [
+        {
+          "name": "List data plans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/plans", "host": ["{{baseUrl}}"], "path": ["plans"] },
+            "description": "List available data plans."
+          }
+        },
+        {
+          "name": "Retrieve a data plan",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/plans/:planid", "host": ["{{baseUrl}}"], "path": ["plans", ":planid"], "variable": [{ "key": "planid", "value": "" }] },
+            "description": "Retrieve a specific data plan by id."
+          }
+        }
+      ]
+    }
+  ]
+}

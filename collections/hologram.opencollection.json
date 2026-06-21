@@ -1,0 +1,365 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "apikey",
+      "password": "{{apiKey}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices"
+          },
+          "docs": "Retrieve a list of devices, optionally filtered by organization, tag, SIM, name, type, or IMEI."
+        },
+        {
+          "info": {
+            "name": "Retrieve a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices/{deviceid}"
+          },
+          "docs": "Retrieve a specific device by id."
+        },
+        {
+          "info": {
+            "name": "Update a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dashboard.hologram.io/api/1/devices/{deviceid}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\",\n  \"tunnelable\": true\n}"
+            }
+          },
+          "docs": "Update the device name, owning organization, or tunnelable flag."
+        },
+        {
+          "info": {
+            "name": "Pause or unpause device data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/{deviceid}/state",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"state\": \"pause\"\n}"
+            }
+          },
+          "docs": "Pause or unpause data for a device (state pause or live)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cellular Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cellular links (SIMs)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular"
+          },
+          "docs": "Retrieve cellular links, optionally filtered by organization, SIM, MSISDN, IMSI, or device."
+        },
+        {
+          "info": {
+            "name": "Retrieve a cellular link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/{linkid}"
+          },
+          "docs": "Retrieve a specific cellular link by id."
+        },
+        {
+          "info": {
+            "name": "Activate (claim) a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/sim_{iccid}/claim",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"plan\": 0,\n  \"zone\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Activate a single SIM by ICCID onto a data plan and zone."
+        },
+        {
+          "info": {
+            "name": "Activate (claim) multiple SIMs in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/bulkclaim",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"sims\": [\"<string>\"],\n  \"plan\": 0,\n  \"zone\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Activate multiple SIMs in bulk by list or range."
+        },
+        {
+          "info": {
+            "name": "Pause or unpause a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/{linkid}/state",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"state\": \"pause\"\n}"
+            }
+          },
+          "docs": "Pause or unpause a SIM profile (state pause or live)."
+        },
+        {
+          "info": {
+            "name": "Change a SIM data plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/{linkid}/changeplan",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"planid\": 0,\n  \"zone\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Change the data plan and zone for a SIM."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags"
+          },
+          "docs": "List device tags for an organization."
+        },
+        {
+          "info": {
+            "name": "Create a device tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Create a new device tag."
+        },
+        {
+          "info": {
+            "name": "Delete a device tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/{tagid}"
+          },
+          "docs": "Delete a device tag."
+        },
+        {
+          "info": {
+            "name": "Link a tag to devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/{tagid}/link",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"deviceids\": [0]\n}"
+            }
+          },
+          "docs": "Add a tag to one or more devices."
+        },
+        {
+          "info": {
+            "name": "Unlink a tag from devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/{tagid}/unlink",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"deviceids\": [0]\n}"
+            }
+          },
+          "docs": "Remove a tag from one or more devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data usage sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/data"
+          },
+          "docs": "List recent cellular data usage sessions."
+        },
+        {
+          "info": {
+            "name": "Daily data usage summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/data/daily"
+          },
+          "docs": "Retrieve daily data usage summaries."
+        },
+        {
+          "info": {
+            "name": "List device-originated SMS usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/sms"
+          },
+          "docs": "List device-originated SMS usage records."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SMS & Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an SMS to devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/sms/incoming",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"deviceids\": [0],\n  \"body\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Send an SMS message to one or more devices."
+        },
+        {
+          "info": {
+            "name": "Send a cloud message to devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/messages",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"deviceids\": [0],\n  \"protocol\": \"TCP\",\n  \"port\": 0,\n  \"data\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Send a TCP or UDP cloud message to one or more devices."
+        },
+        {
+          "info": {
+            "name": "Send a message to a device via a webhook GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/messages/{deviceid}/{webhookguid}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Pre-authenticated inbound webhook endpoint that delivers a message to a device by id and webhook GUID. No API key required."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/plans"
+          },
+          "docs": "List available data plans."
+        },
+        {
+          "info": {
+            "name": "Retrieve a data plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/plans/{planid}"
+          },
+          "docs": "Retrieve a specific data plan by id."
+        }
+      ]
+    }
+  ]
+}

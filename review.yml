@@ -1,0 +1,78 @@
+aid: hologram
+name: Hologram
+review:
+  question: Does Hologram expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Hologram's documented public surface is
+    a REST API over HTTPS at https://dashboard.hologram.io/api/1. No HTTP
+    Server-Sent Events (SSE) stream and no WebSocket surface is documented in
+    the REST API reference, so there is no event-driven transport to model.
+findings:
+  summary: |
+    Hologram does not publish a documented public WebSocket API. The platform
+    exposes a REST (HTTPS) API under https://dashboard.hologram.io/api/1
+    authenticated with HTTP Basic auth (username apikey, API key as password).
+    Inbound, near-real-time integration is offered through outbound webhooks
+    (the Data Engine routes device messages to user-configured HTTP
+    destinations) and through pre-authenticated per-device inbound webhook
+    endpoints (POST /devices/messages/{deviceid}/{webhookguid}) - both HTTP,
+    not WebSocket. The device-side Spacebridge tunnel is an authenticated
+    TCP/SSH inbound tunnel to a device, not a public application WebSocket API.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://dashboard.hologram.io/api/1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound Data Engine webhooks and inbound per-device webhook GUID endpoints deliver messages over HTTP. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Hologram's REST API reference or developer documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://dashboard.hologram.io/api/1/devices
+    - GET  https://dashboard.hologram.io/api/1/devices/{deviceid}
+    - PUT  https://dashboard.hologram.io/api/1/devices/{deviceid}
+    - POST https://dashboard.hologram.io/api/1/devices/{deviceid}/state
+    - GET  https://dashboard.hologram.io/api/1/devices/tags
+    - POST https://dashboard.hologram.io/api/1/devices/tags
+    - DELETE https://dashboard.hologram.io/api/1/devices/tags/{tagid}
+    - POST https://dashboard.hologram.io/api/1/devices/tags/{tagid}/link
+    - POST https://dashboard.hologram.io/api/1/devices/tags/{tagid}/unlink
+    - GET  https://dashboard.hologram.io/api/1/links/cellular
+    - GET  https://dashboard.hologram.io/api/1/links/cellular/{linkid}
+    - POST https://dashboard.hologram.io/api/1/links/cellular/sim_{iccid}/claim
+    - POST https://dashboard.hologram.io/api/1/links/cellular/bulkclaim
+    - POST https://dashboard.hologram.io/api/1/links/cellular/{linkid}/state
+    - POST https://dashboard.hologram.io/api/1/links/cellular/{linkid}/changeplan
+    - GET  https://dashboard.hologram.io/api/1/usage/data
+    - GET  https://dashboard.hologram.io/api/1/usage/data/daily
+    - GET  https://dashboard.hologram.io/api/1/usage/sms
+    - POST https://dashboard.hologram.io/api/1/sms/incoming
+    - POST https://dashboard.hologram.io/api/1/devices/messages
+    - POST https://dashboard.hologram.io/api/1/devices/messages/{deviceid}/{webhookguid}
+    - GET  https://dashboard.hologram.io/api/1/plans
+    - GET  https://dashboard.hologram.io/api/1/plans/{planid}
+sources:
+  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+    type: Documentation
+    note: REST base URL https://dashboard.hologram.io/api/1 with HTTP Basic (apikey) auth; no WebSocket mentioned.
+  - url: https://hologram.docs.apiary.io/
+    type: APIReference
+    note: All documented endpoints are HTTPS REST.
+  - url: https://github.com/hologram-io/rest-api-docs
+    type: SourceCode
+    note: API Blueprint source for the REST API; documents REST resources only.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Near-real-time device
+    integration is delivered through HTTP webhooks, which are modeled as a
+    Webhooks API in apis.yml rather than as an AsyncAPI event channel.
