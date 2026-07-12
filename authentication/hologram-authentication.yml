@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/hologram-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: apikeyAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram
+    API key as the password. The API key may alternatively be supplied as an `apikey` query
+    parameter.
+  sources:
+  - openapi/hologram-openapi.yml
