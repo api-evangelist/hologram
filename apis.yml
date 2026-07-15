@@ -155,6 +155,8 @@ apis:
     messages addressed to a device by id and webhook GUID without an API key, for
     integrating external systems with the Hologram cloud.
 common:
+- type: AgenticAccess
+  url: agentic-access/hologram-agentic-access.yml
 - type: DomainSecurity
   url: security/hologram-domain-security.yml
 - type: Authentication
