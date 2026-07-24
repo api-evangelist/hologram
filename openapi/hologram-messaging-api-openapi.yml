@@ -1,0 +1,70 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links Messaging API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: Messaging
+paths:
+  /devices/messages:
+    post:
+      operationId: sendCloudMessage
+      tags:
+      - Messaging
+      summary: Send a cloud message to devices
+      description: Send a TCP or UDP message to one or more devices over the Hologram cloud.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deviceids
+              - protocol
+              - port
+              properties:
+                deviceids:
+                  type: array
+                  items:
+                    type: integer
+                protocol:
+                  type: string
+                  enum:
+                  - TCP
+                  - UDP
+                port:
+                  type: integer
+                data:
+                  type: string
+                base64data:
+                  type: string
+      responses:
+        '200':
+          description: The message was sent.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.

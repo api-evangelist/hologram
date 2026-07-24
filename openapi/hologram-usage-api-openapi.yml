@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links Usage API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: Usage
+paths:
+  /usage/data:
+    get:
+      operationId: listDataUsage
+      tags:
+      - Usage
+      summary: List data usage sessions
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - name: linkid
+        in: query
+        schema:
+          type: integer
+      - name: tagid
+        in: query
+        schema:
+          type: integer
+      - name: timestart
+        in: query
+        schema:
+          type: integer
+      - name: timeend
+        in: query
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: A list of data usage sessions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageListResponse'
+  /usage/data/daily:
+    get:
+      operationId: listDailyDataUsage
+      tags:
+      - Usage
+      summary: Daily data usage summaries
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - name: linkid
+        in: query
+        schema:
+          type: integer
+      - name: timestart
+        in: query
+        schema:
+          type: integer
+      - name: timeend
+        in: query
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Daily data usage summaries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageListResponse'
+  /usage/sms:
+    get:
+      operationId: listSmsUsage
+      tags:
+      - Usage
+      summary: List device-originated SMS usage
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - name: linkid
+        in: query
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: A list of SMS usage records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageListResponse'
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+  schemas:
+    UsageRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+        deviceid:
+          type: integer
+        linkid:
+          type: integer
+        bytes:
+          type: integer
+        timestamp:
+          type: string
+        network:
+          type: string
+    UsageListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRecord'
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.

@@ -1,0 +1,192 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links Tags API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: Tags
+paths:
+  /devices/tags:
+    get:
+      operationId: listDeviceTags
+      tags:
+      - Tags
+      summary: List device tags
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: A list of device tags.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagListResponse'
+    post:
+      operationId: createDeviceTag
+      tags:
+      - Tags
+      summary: Create a device tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                deviceids:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: The created tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+  /devices/tags/{tagid}:
+    delete:
+      operationId: deleteDeviceTag
+      tags:
+      - Tags
+      summary: Delete a device tag
+      parameters:
+      - $ref: '#/components/parameters/tagid'
+      responses:
+        '200':
+          description: The tag was deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /devices/tags/{tagid}/link:
+    post:
+      operationId: linkDeviceTag
+      tags:
+      - Tags
+      summary: Link a tag to devices
+      parameters:
+      - $ref: '#/components/parameters/tagid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deviceids
+              properties:
+                deviceids:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: The tag was linked to the devices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /devices/tags/{tagid}/unlink:
+    post:
+      operationId: unlinkDeviceTag
+      tags:
+      - Tags
+      summary: Unlink a tag from devices
+      parameters:
+      - $ref: '#/components/parameters/tagid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deviceids
+              properties:
+                deviceids:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: The tag was unlinked from the devices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+components:
+  schemas:
+    TagResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Tag'
+    TagListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        orgid:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: integer
+  parameters:
+    tagid:
+      name: tagid
+      in: path
+      required: true
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.

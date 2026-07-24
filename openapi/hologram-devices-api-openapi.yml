@@ -1,0 +1,215 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links Devices API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: Devices
+paths:
+  /devices:
+    get:
+      operationId: listDevices
+      tags:
+      - Devices
+      summary: List devices
+      description: Retrieve a list of devices, optionally filtered by organization, tag, SIM, name, type, or IMEI.
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - name: tagid
+        in: query
+        schema:
+          type: integer
+      - name: tagname
+        in: query
+        schema:
+          type: string
+      - name: sim
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/startafter'
+      responses:
+        '200':
+          description: A list of devices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+  /devices/{deviceid}:
+    get:
+      operationId: getDevice
+      tags:
+      - Devices
+      summary: Retrieve a device
+      parameters:
+      - $ref: '#/components/parameters/deviceid'
+      responses:
+        '200':
+          description: The requested device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceResponse'
+    put:
+      operationId: updateDevice
+      tags:
+      - Devices
+      summary: Update a device
+      description: Update the device name, owning organization, or tunnelable flag.
+      parameters:
+      - $ref: '#/components/parameters/deviceid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                orgid:
+                  type: integer
+                tunnelable:
+                  type: boolean
+      responses:
+        '200':
+          description: The updated device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceResponse'
+  /devices/{deviceid}/state:
+    post:
+      operationId: setDeviceState
+      tags:
+      - Devices
+      summary: Pause or unpause device data
+      parameters:
+      - $ref: '#/components/parameters/deviceid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - state
+              properties:
+                state:
+                  type: string
+                  enum:
+                  - pause
+                  - live
+      responses:
+        '200':
+          description: The device state was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+components:
+  parameters:
+    deviceid:
+      name: deviceid
+      in: path
+      required: true
+      schema:
+        type: integer
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+  schemas:
+    DeviceResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Device'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+    Device:
+      type: object
+      properties:
+        id:
+          type: integer
+        orgid:
+          type: integer
+        name:
+          type: string
+        phonenumber:
+          type: string
+        imei:
+          type: string
+        iccid:
+          type: string
+        lastsession:
+          type: object
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        links:
+          type: object
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        orgid:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: integer
+    DeviceListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.

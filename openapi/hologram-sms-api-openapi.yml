@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links SMS API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: SMS
+paths:
+  /sms/incoming:
+    post:
+      operationId: sendSmsToDevice
+      tags:
+      - SMS
+      summary: Send an SMS to one or more devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - body
+              properties:
+                deviceid:
+                  type: integer
+                deviceids:
+                  type: array
+                  items:
+                    type: integer
+                fromnumber:
+                  type: string
+                body:
+                  type: string
+                base64body:
+                  type: string
+      responses:
+        '200':
+          description: The SMS was queued for delivery.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.

@@ -1,0 +1,111 @@
+openapi: 3.0.1
+info:
+  title: Hologram REST Cellular Links Plans API
+  description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
+  termsOfService: https://www.hologram.io/terms/
+  contact:
+    name: Hologram Support
+    url: https://support.hologram.io/
+  version: '1.0'
+servers:
+- url: https://dashboard.hologram.io/api/1
+security:
+- apikeyAuth: []
+tags:
+- name: Plans
+paths:
+  /plans:
+    get:
+      operationId: listPlans
+      tags:
+      - Plans
+      summary: List data plans
+      parameters:
+      - $ref: '#/components/parameters/orgid'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/startafter'
+      responses:
+        '200':
+          description: A list of data plans.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanListResponse'
+  /plans/{planid}:
+    get:
+      operationId: getPlan
+      tags:
+      - Plans
+      summary: Retrieve a data plan
+      parameters:
+      - name: planid
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The requested data plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+components:
+  schemas:
+    PlanListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+    Plan:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        data:
+          type: integer
+        price:
+          type: integer
+        zone:
+          type: string
+        sms:
+          type: integer
+        carrier:
+          type: string
+    PlanResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Plan'
+  parameters:
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use the literal username `apikey` and your Hologram API key as the password. The API key may alternatively be supplied as an `apikey` query parameter.
