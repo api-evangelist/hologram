@@ -7,7 +7,20 @@ description: Hologram is a global cellular IoT connectivity platform providing e
   API lets developers activate and manage SIMs and devices, query data and SMS usage,
   send SMS and cloud messages to devices, manage plans and tags, and open secure
   Spacebridge tunnels.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hologram.png
 tags:
 - IoT
 - Cellular
@@ -18,142 +31,150 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: hologram:hologram-devices-sims-api
-  name: Hologram Devices & SIMs API
-  tags:
-  - Devices
-  - SIMs
-  - Cellular Links
-  - Activation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: hologram:hologram-cellular-links-api
+  name: Hologram Cellular Links API
+  description: The Cellular Links API from Hologram — 6 operation(s) for cellular links.
   humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
   baseURL: https://dashboard.hologram.io/api/1
-  properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: List, retrieve, and update devices and their cellular links; activate
-    (claim) single or bulk SIMs; pause/unpause data; change plans; and look up device
-    names and locations.
-- aid: hologram:hologram-data-usage-api
-  name: Hologram Data Usage API
   tags:
-  - Data Usage
-  - Sessions
-  - Billing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://hologram.docs.apiary.io/
+  - Cellular Links
+  properties:
+  - type: OpenAPI
+    url: openapi/hologram-cellular-links-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
+- aid: hologram:hologram-devices-api
+  name: Hologram Devices API
+  description: The Devices API from Hologram — 3 operation(s) for devices.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
   baseURL: https://dashboard.hologram.io/api/1
-  properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: Query cellular data usage as session records, daily, monthly, and billing-period
-    summaries, plus SMS usage, scoped by organization, link, or tag.
-- aid: hologram:hologram-sms-messaging-api
-  name: Hologram SMS & Messaging API
   tags:
-  - SMS
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/hologram-devices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
+- aid: hologram:hologram-messaging-api
+  name: Hologram Messaging API
+  description: The Messaging API from Hologram — 1 operation(s) for messaging.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
+  tags:
   - Messaging
-  - Cloud Messages
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://hologram.docs.apiary.io/
-  baseURL: https://dashboard.hologram.io/api/1
   properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: Send SMS to devices, deliver TCP/UDP cloud messages to devices, and
-    push messages to the Hologram Data Engine via authenticated calls or per-device
-    webhook GUIDs.
+  - type: OpenAPI
+    url: openapi/hologram-messaging-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
 - aid: hologram:hologram-plans-api
   name: Hologram Plans API
+  description: The Plans API from Hologram — 2 operation(s) for plans.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
   tags:
   - Plans
-  - Pricing
-  - Data Plans
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://hologram.docs.apiary.io/
-  baseURL: https://dashboard.hologram.io/api/1
   properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: List available data plans, retrieve a single plan, and read plan pricing
-    used when activating or changing the plan on a SIM.
+  - type: OpenAPI
+    url: openapi/hologram-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
+- aid: hologram:hologram-sms-api
+  name: Hologram SMS API
+  description: The SMS API from Hologram — 1 operation(s) for sms.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
+  tags:
+  - SMS
+  properties:
+  - type: OpenAPI
+    url: openapi/hologram-sms-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
 - aid: hologram:hologram-tags-api
   name: Hologram Tags API
+  description: The Tags API from Hologram — 4 operation(s) for tags.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
   tags:
   - Tags
-  - Organization
-  - Grouping
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://hologram.docs.apiary.io/
-  baseURL: https://dashboard.hologram.io/api/1
   properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: Create, list, and delete device tags and link or unlink tags to one
-    or many devices for fleet grouping and bulk operations.
+  - type: OpenAPI
+    url: openapi/hologram-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
+- aid: hologram:hologram-usage-api
+  name: Hologram Usage API
+  description: The Usage API from Hologram — 3 operation(s) for usage.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/hologram-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
 - aid: hologram:hologram-webhooks-api
   name: Hologram Webhooks API
+  description: The Webhooks API from Hologram — 1 operation(s) for webhooks.
+  humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  baseURL: https://dashboard.hologram.io/api/1
   tags:
   - Webhooks
-  - Inbound
-  - Device Messages
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://hologram.docs.apiary.io/
-  baseURL: https://dashboard.hologram.io/api/1
   properties:
-  - url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
-    type: Documentation
-  - url: https://hologram.docs.apiary.io/
-    type: APIReference
-  - url: openapi/hologram-openapi.yml
-    type: OpenAPI
-  - url: collections/hologram.postman_collection.json
-    type: PostmanCollection
-  - url: collections/hologram.opencollection.json
-    type: OpenCollection
-  description: Pre-authenticated per-device webhook endpoints that accept inbound
-    messages addressed to a device by id and webhook GUID without an API key, for
-    integrating external systems with the Hologram cloud.
+  - type: OpenAPI
+    url: openapi/hologram-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
+  - type: APIReference
+    url: https://hologram.docs.apiary.io/
+  - type: PostmanCollection
+    url: collections/hologram.postman_collection.json
+  - type: OpenCollection
+    url: collections/hologram.opencollection.json
 common:
 - type: AgenticAccess
   url: agentic-access/hologram-agentic-access.yml
