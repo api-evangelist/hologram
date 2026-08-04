@@ -1,0 +1,28 @@
+{
+  "provider": "hologram",
+  "sources": [
+    "hologram-cellular-links-api-openapi.yml",
+    "hologram-devices-api-openapi.yml",
+    "hologram-messaging-api-openapi.yml",
+    "hologram-plans-api-openapi.yml",
+    "hologram-sms-api-openapi.yml",
+    "hologram-tags-api-openapi.yml",
+    "hologram-usage-api-openapi.yml",
+    "hologram-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "hologram-cellular-links-api-openapi.yml",
+    "hologram-devices-api-openapi.yml",
+    "hologram-messaging-api-openapi.yml",
+    "hologram-plans-api-openapi.yml",
+    "hologram-sms-api-openapi.yml",
+    "hologram-tags-api-openapi.yml",
+    "hologram-usage-api-openapi.yml",
+    "hologram-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
