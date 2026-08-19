@@ -1,0 +1,146 @@
+{
+  "item": [
+    {
+      "id": "6f9ceaec-01ad-45f0-825a-ef8ea3155b5b",
+      "name": "Messaging",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b5d31e2-d908-4b35-9717-ccd01263f0c9",
+          "name": "Send a cloud message to devices",
+          "request": {
+            "name": "Send a cloud message to devices",
+            "description": {
+              "content": "Send a TCP or UDP message to one or more devices over the Hologram cloud.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"protocol\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"data\": \"<string>\",\n  \"base64data\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf63be7d-e512-4c08-ac8c-b1e38a4cb6d0",
+              "name": "The message was sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"protocol\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"data\": \"<string>\",\n  \"base64data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dashboard.hologram.io/api/1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d8ff0299-43e7-4a5d-8a86-de49c9f4f92d",
+    "name": "Hologram REST Cellular Links Messaging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.\n\nContact Support:\n Name: Hologram Support",
+      "type": "text/plain"
+    }
+  }
+}

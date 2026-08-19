@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links Usage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data usage sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/data",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tagid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timestart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timeend",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List data usage sessions"
+        },
+        {
+          "info": {
+            "name": "Daily data usage summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/data/daily",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timestart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timeend",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "Daily data usage summaries"
+        },
+        {
+          "info": {
+            "name": "List device-originated SMS usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/usage/sms",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List device-originated SMS usage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

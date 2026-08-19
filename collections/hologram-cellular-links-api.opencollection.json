@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cellular Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cellular links (SIMs)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "sim",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "startafter",
+                "value": "",
+                "type": "query",
+                "description": "Record id to paginate after."
+              }
+            ]
+          },
+          "docs": "Retrieve cellular links, optionally filtered by organization, SIM, MSISDN, IMSI, or device."
+        },
+        {
+          "info": {
+            "name": "Retrieve a cellular link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/:linkid",
+            "params": [
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a cellular link"
+        },
+        {
+          "info": {
+            "name": "Activate (claim) a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/sim_:iccid/claim",
+            "params": [
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a single SIM by ICCID onto a data plan and zone."
+        },
+        {
+          "info": {
+            "name": "Activate (claim) multiple SIMs in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/bulkclaim",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate (claim) multiple SIMs in bulk"
+        },
+        {
+          "info": {
+            "name": "Pause or unpause a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/:linkid/state",
+            "params": [
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause or unpause a SIM"
+        },
+        {
+          "info": {
+            "name": "Change a SIM data plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/links/cellular/:linkid/changeplan",
+            "params": [
+              {
+                "name": "linkid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change a SIM data plan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links Tags API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              }
+            ]
+          },
+          "docs": "List device tags"
+        },
+        {
+          "info": {
+            "name": "Create a device tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a device tag"
+        },
+        {
+          "info": {
+            "name": "Delete a device tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/:tagid",
+            "params": [
+              {
+                "name": "tagid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a device tag"
+        },
+        {
+          "info": {
+            "name": "Link a tag to devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/:tagid/link",
+            "params": [
+              {
+                "name": "tagid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link a tag to devices"
+        },
+        {
+          "info": {
+            "name": "Unlink a tag from devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/tags/:tagid/unlink",
+            "params": [
+              {
+                "name": "tagid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unlink a tag from devices"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links Devices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "tagid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tagname",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sim",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "startafter",
+                "value": "",
+                "type": "query",
+                "description": "Record id to paginate after."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of devices, optionally filtered by organization, tag, SIM, name, type, or IMEI."
+        },
+        {
+          "info": {
+            "name": "Retrieve a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/devices/:deviceid",
+            "params": [
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a device"
+        },
+        {
+          "info": {
+            "name": "Update a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dashboard.hologram.io/api/1/devices/:deviceid",
+            "params": [
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the device name, owning organization, or tunnelable flag."
+        },
+        {
+          "info": {
+            "name": "Pause or unpause device data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/:deviceid/state",
+            "params": [
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause or unpause device data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

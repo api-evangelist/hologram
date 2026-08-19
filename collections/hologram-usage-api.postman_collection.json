@@ -1,0 +1,416 @@
+{
+  "item": [
+    {
+      "id": "92ac497c-c3e7-4730-a623-b98a74efc5e8",
+      "name": "Usage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf6cf8b2-1153-4c1a-a2e9-a2a9a5a1e637",
+          "name": "List data usage sessions",
+          "request": {
+            "name": "List data usage sessions",
+            "description": {},
+            "url": {
+              "path": [
+                "usage",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgid",
+                  "value": "<integer>",
+                  "description": "Organization id to scope the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "linkid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tagid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timestart",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeend",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f95990df-d757-4de6-989a-fe46658600a2",
+              "name": "A list of data usage sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "linkid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timestart",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeend",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"size\": 9230,\n  \"limit\": 3921,\n  \"continues\": false,\n  \"data\": [\n    {\n      \"id\": 4217,\n      \"deviceid\": 9218,\n      \"linkid\": 5994,\n      \"bytes\": 9701,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    },\n    {\n      \"id\": 419,\n      \"deviceid\": 2480,\n      \"linkid\": 8153,\n      \"bytes\": 6591,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9da0de8-a953-4335-b03b-49109a312785",
+          "name": "Daily data usage summaries",
+          "request": {
+            "name": "Daily data usage summaries",
+            "description": {},
+            "url": {
+              "path": [
+                "usage",
+                "data",
+                "daily"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgid",
+                  "value": "<integer>",
+                  "description": "Organization id to scope the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "linkid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timestart",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeend",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08b9eba8-8433-441f-8095-6a9caebade60",
+              "name": "Daily data usage summaries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "data",
+                    "daily"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "linkid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timestart",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeend",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"size\": 1610,\n  \"limit\": 6915,\n  \"continues\": false,\n  \"data\": [\n    {\n      \"id\": 5719,\n      \"deviceid\": 3291,\n      \"linkid\": 9644,\n      \"bytes\": 6710,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    },\n    {\n      \"id\": 5320,\n      \"deviceid\": 470,\n      \"linkid\": 8433,\n      \"bytes\": 8893,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "804a898f-aaf4-4f03-8898-3451e7dbba96",
+          "name": "List device-originated SMS usage",
+          "request": {
+            "name": "List device-originated SMS usage",
+            "description": {},
+            "url": {
+              "path": [
+                "usage",
+                "sms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgid",
+                  "value": "<integer>",
+                  "description": "Organization id to scope the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "linkid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11346c3d-7ea9-4633-bd41-975f91e889dd",
+              "name": "A list of SMS usage records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "linkid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"size\": 1610,\n  \"limit\": 6915,\n  \"continues\": false,\n  \"data\": [\n    {\n      \"id\": 5719,\n      \"deviceid\": 3291,\n      \"linkid\": 9644,\n      \"bytes\": 6710,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    },\n    {\n      \"id\": 5320,\n      \"deviceid\": 470,\n      \"linkid\": 8433,\n      \"bytes\": 8893,\n      \"timestamp\": \"string\",\n      \"network\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dashboard.hologram.io/api/1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2c5c8aff-75ce-4bae-84d8-fa3b96e245a7",
+    "name": "Hologram REST Cellular Links Usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.\n\nContact Support:\n Name: Hologram Support",
+      "type": "text/plain"
+    }
+  }
+}

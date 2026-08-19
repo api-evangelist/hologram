@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a message to a device via a webhook GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dashboard.hologram.io/api/1/devices/messages/:deviceid/:webhookguid",
+            "params": [
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhookguid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pre-authenticated inbound endpoint that delivers a message to a device addressed by its id and a per-device webhook GUID. Does not require API key authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

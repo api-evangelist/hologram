@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hologram REST Cellular Links Plans API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/plans",
+            "params": [
+              {
+                "name": "orgid",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to scope the request."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "startafter",
+                "value": "",
+                "type": "query",
+                "description": "Record id to paginate after."
+              }
+            ]
+          },
+          "docs": "List data plans"
+        },
+        {
+          "info": {
+            "name": "Retrieve a data plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dashboard.hologram.io/api/1/plans/:planid",
+            "params": [
+              {
+                "name": "planid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a data plan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "64a635fa-54a3-4a40-a3a1-cd165b97c97b",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab868acf-9c5a-4590-bbc3-6f756aabce51",
+          "name": "List devices",
+          "request": {
+            "name": "List devices",
+            "description": {
+              "content": "Retrieve a list of devices, optionally filtered by organization, tag, SIM, name, type, or IMEI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgid",
+                  "value": "<integer>",
+                  "description": "Organization id to scope the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tagname",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sim",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "startafter",
+                  "value": "<integer>",
+                  "description": "Record id to paginate after."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "727047aa-fd0e-44b1-8d6a-4477cbd84d56",
+              "name": "A list of devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagname",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startafter",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"size\": 2817,\n  \"limit\": 9883,\n  \"continues\": true,\n  \"data\": [\n    {\n      \"id\": 5473,\n      \"orgid\": 9923,\n      \"name\": \"string\",\n      \"phonenumber\": \"string\",\n      \"imei\": \"string\",\n      \"iccid\": \"string\",\n      \"lastsession\": {},\n      \"tags\": [\n        {\n          \"id\": 1471,\n          \"name\": \"string\",\n          \"orgid\": 9401,\n          \"devices\": [\n            9754,\n            971\n          ]\n        },\n        {\n          \"id\": 2,\n          \"name\": \"string\",\n          \"orgid\": 3764,\n          \"devices\": [\n            8859,\n            5531\n          ]\n        }\n      ],\n      \"links\": {}\n    },\n    {\n      \"id\": 4156,\n      \"orgid\": 6647,\n      \"name\": \"string\",\n      \"phonenumber\": \"string\",\n      \"imei\": \"string\",\n      \"iccid\": \"string\",\n      \"lastsession\": {},\n      \"tags\": [\n        {\n          \"id\": 26,\n          \"name\": \"string\",\n          \"orgid\": 9881,\n          \"devices\": [\n            200,\n            7672\n          ]\n        },\n        {\n          \"id\": 6809,\n          \"name\": \"string\",\n          \"orgid\": 7373,\n          \"devices\": [\n            788,\n            7051\n          ]\n        }\n      ],\n      \"links\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d7392f6-6a5f-4ec1-8842-a41fc301f422",
+          "name": "Retrieve a device",
+          "request": {
+            "name": "Retrieve a device",
+            "description": {},
+            "url": {
+              "path": [
+                "devices",
+                ":deviceid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4b69d1e-0153-46e7-a959-faf024427d80",
+              "name": "The requested device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 4942,\n    \"orgid\": 8608,\n    \"name\": \"string\",\n    \"phonenumber\": \"string\",\n    \"imei\": \"string\",\n    \"iccid\": \"string\",\n    \"lastsession\": {},\n    \"tags\": [\n      {\n        \"id\": 7299,\n        \"name\": \"string\",\n        \"orgid\": 9547,\n        \"devices\": [\n          9423,\n          7552\n        ]\n      },\n      {\n        \"id\": 5674,\n        \"name\": \"string\",\n        \"orgid\": 4119,\n        \"devices\": [\n          166,\n          1186\n        ]\n      }\n    ],\n    \"links\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0577f1b3-4b08-40cf-aa9c-01c89f3fd6b1",
+          "name": "Update a device",
+          "request": {
+            "name": "Update a device",
+            "description": {
+              "content": "Update the device name, owning organization, or tunnelable flag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tunnelable\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "193bf502-da34-4f88-ad37-7caeae6c9712",
+              "name": "The updated device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tunnelable\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 4942,\n    \"orgid\": 8608,\n    \"name\": \"string\",\n    \"phonenumber\": \"string\",\n    \"imei\": \"string\",\n    \"iccid\": \"string\",\n    \"lastsession\": {},\n    \"tags\": [\n      {\n        \"id\": 7299,\n        \"name\": \"string\",\n        \"orgid\": 9547,\n        \"devices\": [\n          9423,\n          7552\n        ]\n      },\n      {\n        \"id\": 5674,\n        \"name\": \"string\",\n        \"orgid\": 4119,\n        \"devices\": [\n          166,\n          1186\n        ]\n      }\n    ],\n    \"links\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c10826fd-9c3a-479b-90cd-ed70e8a80601",
+          "name": "Pause or unpause device data",
+          "request": {
+            "name": "Pause or unpause device data",
+            "description": {},
+            "url": {
+              "path": [
+                "devices",
+                ":deviceid",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0e278c4-e4a6-4f90-8f3f-e583b97d2282",
+              "name": "The device state was updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceid",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dashboard.hologram.io/api/1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1378ae93-34d8-4729-806e-8bc8eeb63ffc",
+    "name": "Hologram REST Cellular Links Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.\n\nContact Support:\n Name: Hologram Support",
+      "type": "text/plain"
+    }
+  }
+}

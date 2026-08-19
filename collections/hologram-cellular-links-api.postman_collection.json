@@ -1,0 +1,721 @@
+{
+  "item": [
+    {
+      "id": "146031db-bd81-4f88-abd0-d825c25ee832",
+      "name": "Cellular Links",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84bb20ab-58e5-47c1-9aa9-761d8ed22919",
+          "name": "List cellular links (SIMs)",
+          "request": {
+            "name": "List cellular links (SIMs)",
+            "description": {
+              "content": "Retrieve cellular links, optionally filtered by organization, SIM, MSISDN, IMSI, or device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "links",
+                "cellular"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgid",
+                  "value": "<integer>",
+                  "description": "Organization id to scope the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "sim",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "deviceid",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "startafter",
+                  "value": "<integer>",
+                  "description": "Record id to paginate after."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "509a7b28-5931-4cfb-8332-973ff3a16fbe",
+              "name": "A list of cellular links.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deviceid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startafter",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"size\": 696,\n  \"limit\": 9753,\n  \"continues\": false,\n  \"data\": [\n    {\n      \"id\": 4637,\n      \"deviceid\": 2942,\n      \"sim\": \"string\",\n      \"msisdn\": \"string\",\n      \"imsi\": \"string\",\n      \"planid\": 5072,\n      \"zone\": \"string\",\n      \"state\": \"string\",\n      \"whenclaimed\": \"string\",\n      \"whenexpires\": \"string\"\n    },\n    {\n      \"id\": 5676,\n      \"deviceid\": 1876,\n      \"sim\": \"string\",\n      \"msisdn\": \"string\",\n      \"imsi\": \"string\",\n      \"planid\": 3517,\n      \"zone\": \"string\",\n      \"state\": \"string\",\n      \"whenclaimed\": \"string\",\n      \"whenexpires\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f70ab9c-509d-4440-9882-79beba5f66fe",
+          "name": "Retrieve a cellular link",
+          "request": {
+            "name": "Retrieve a cellular link",
+            "description": {},
+            "url": {
+              "path": [
+                "links",
+                "cellular",
+                ":linkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "linkid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "636e905b-d6d8-4221-8515-638fe59be573",
+              "name": "The requested cellular link.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular",
+                    ":linkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "linkid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": 6257,\n    \"deviceid\": 6020,\n    \"sim\": \"string\",\n    \"msisdn\": \"string\",\n    \"imsi\": \"string\",\n    \"planid\": 9383,\n    \"zone\": \"string\",\n    \"state\": \"string\",\n    \"whenclaimed\": \"string\",\n    \"whenexpires\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b70372a5-5cd5-4c94-9a6d-842bcaa00d74",
+          "name": "Activate (claim) a SIM",
+          "request": {
+            "name": "Activate (claim) a SIM",
+            "description": {
+              "content": "Activate a single SIM by ICCID onto a data plan and zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "links",
+                "cellular",
+                "sim_{{iccid}}",
+                "claim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": \"<integer>\",\n  \"zone\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tagid\": \"<integer>\",\n  \"overage_limit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ebe40d76-24db-4c11-a531-9067945a4eea",
+              "name": "The SIM was activated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular",
+                    "sim_{{iccid}}",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": \"<integer>\",\n  \"zone\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tagid\": \"<integer>\",\n  \"overage_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": 6257,\n    \"deviceid\": 6020,\n    \"sim\": \"string\",\n    \"msisdn\": \"string\",\n    \"imsi\": \"string\",\n    \"planid\": 9383,\n    \"zone\": \"string\",\n    \"state\": \"string\",\n    \"whenclaimed\": \"string\",\n    \"whenexpires\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4690d2c5-c759-4ab7-9c09-5ca34cf376bc",
+          "name": "Activate (claim) multiple SIMs in bulk",
+          "request": {
+            "name": "Activate (claim) multiple SIMs in bulk",
+            "description": {},
+            "url": {
+              "path": [
+                "links",
+                "cellular",
+                "bulkclaim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": \"<integer>\",\n  \"sims\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"simrange\": \"<string>\",\n  \"zone\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tagid\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad434d98-4600-49fa-9d07-93e66cf48a8a",
+              "name": "The SIMs were activated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular",
+                    "bulkclaim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan\": \"<integer>\",\n  \"sims\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"simrange\": \"<string>\",\n  \"zone\": \"<string>\",\n  \"orgid\": \"<integer>\",\n  \"tagid\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "435475a7-2dc8-4ace-a8a5-1fbdce0b60e0",
+          "name": "Pause or unpause a SIM",
+          "request": {
+            "name": "Pause or unpause a SIM",
+            "description": {},
+            "url": {
+              "path": [
+                "links",
+                "cellular",
+                ":linkid",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "linkid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5708488-f8d5-4c92-8b67-e140349e07ba",
+              "name": "The SIM state was updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular",
+                    ":linkid",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "linkid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55b74dd4-a547-4c72-a4de-2c4bc0343edc",
+          "name": "Change a SIM data plan",
+          "request": {
+            "name": "Change a SIM data plan",
+            "description": {},
+            "url": {
+              "path": [
+                "links",
+                "cellular",
+                ":linkid",
+                "changeplan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "linkid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planid\": \"<integer>\",\n  \"zone\": \"<string>\",\n  \"overage_limit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97fed813-11e1-47ef-9870-ffabce645532",
+              "name": "The SIM plan was changed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "links",
+                    "cellular",
+                    ":linkid",
+                    "changeplan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "linkid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planid\": \"<integer>\",\n  \"zone\": \"<string>\",\n  \"overage_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dashboard.hologram.io/api/1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "iccid"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c2bdfca4-a903-464e-b15e-93751c0cfece",
+    "name": "Hologram REST Cellular Links API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.\n\nContact Support:\n Name: Hologram Support",
+      "type": "text/plain"
+    }
+  }
+}
