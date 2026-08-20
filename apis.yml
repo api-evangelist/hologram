@@ -163,6 +163,8 @@ apis:
   humanURL: https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api
   baseURL: https://dashboard.hologram.io/api/1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
