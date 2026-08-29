@@ -7,6 +7,18 @@ description: Hologram is a global cellular IoT connectivity platform providing e
   API lets developers activate and manage SIMs and devices, query data and SMS usage,
   send SMS and cloud messages to devices, manage plans and tags, and open secure
   Spacebridge tunnels.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
