@@ -1,0 +1,25 @@
+slug: hologram
+provider: Hologram
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Cellular Links
+  spec_file: hologram-cellular-links-api-openapi.yml
+  capability_id: BC-2640.20
+  capability_id_l1: BC-2640
+  capability_name: SIM & eSIM Lifecycle Management
+  confidence: 0.85
+  evidence: POST /links/cellular/sim_{iccid}/claim  claimSim  Activate (claim) a SIM; POST /links/cellular/{linkid}/changeplan  Change
+    a SIM data plan; 'eUICC SIMs that roam across 550+ carrier networks'
+  reason: Operations activate, bulk-claim, pause and re-plan physical/eUICC SIMs identified by ICCID —
+    this is SIM/eSIM lifecycle management within telecom subscriber management, not generic device admin.

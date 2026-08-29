@@ -190,6 +190,9 @@ apis:
   - type: OpenCollection
     url: collections/hologram.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/hologram-capability-edges.yml
+  name: Hologram Business Capability Map
 - type: AgenticAccess
   url: agentic-access/hologram-agentic-access.yml
 - type: DomainSecurity
