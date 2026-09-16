@@ -2,11 +2,10 @@ aid: hologram
 url: https://raw.githubusercontent.com/api-evangelist/hologram/refs/heads/main/apis.yml
 name: Hologram
 kind: company
-description: Hologram is a global cellular IoT connectivity platform providing eUICC
-  SIMs that roam across 550+ carrier networks in 200+ countries. The Hologram REST
-  API lets developers activate and manage SIMs and devices, query data and SMS usage,
-  send SMS and cloud messages to devices, manage plans and tags, and open secure
-  Spacebridge tunnels.
+description: Hologram is a global cellular IoT connectivity platform providing eUICC SIMs that roam across
+  550+ carrier networks in 200+ countries. The Hologram REST API lets developers activate and manage SIMs
+  and devices, query data and SMS usage, send SMS and cloud messages to devices, manage plans and tags,
+  and open secure Spacebridge tunnels.
 deliveryModel:
   model: saas
   open_source: false
@@ -40,8 +39,9 @@ tags:
 - Connectivity
 - SIM
 - M2M
+- Machine-to-Machine
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: hologram:hologram-cellular-links-api
