@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hologram REST Cellular Links Devices API
+  title: Hologram REST Devices API
   description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
   termsOfService: https://www.hologram.io/terms/
   contact:
@@ -118,10 +118,10 @@ paths:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
   parameters:
-    deviceid:
-      name: deviceid
-      in: path
-      required: true
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
       schema:
         type: integer
     startafter:
@@ -130,19 +130,32 @@ components:
       description: Record id to paginate after.
       schema:
         type: integer
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
     orgid:
       name: orgid
       in: query
       description: Organization id to scope the request.
       schema:
         type: integer
+    deviceid:
+      name: deviceid
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        orgid:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: integer
     DeviceResponse:
       type: object
       properties:
@@ -150,6 +163,21 @@ components:
           type: boolean
         data:
           $ref: '#/components/schemas/Device'
+    DeviceListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
     SuccessResponse:
       type: object
       properties:
@@ -180,34 +208,6 @@ components:
             $ref: '#/components/schemas/Tag'
         links:
           type: object
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        orgid:
-          type: integer
-        devices:
-          type: array
-          items:
-            type: integer
-    DeviceListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        size:
-          type: integer
-        limit:
-          type: integer
-        continues:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
   securitySchemes:
     apikeyAuth:
       type: http

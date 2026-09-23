@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hologram REST Cellular Links Usage API
+  title: Hologram REST Usage API
   description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
   termsOfService: https://www.hologram.io/terms/
   contact:
@@ -109,21 +109,6 @@ components:
       schema:
         type: integer
   schemas:
-    UsageRecord:
-      type: object
-      properties:
-        id:
-          type: integer
-        deviceid:
-          type: integer
-        linkid:
-          type: integer
-        bytes:
-          type: integer
-        timestamp:
-          type: string
-        network:
-          type: string
     UsageListResponse:
       type: object
       properties:
@@ -139,6 +124,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UsageRecord'
+    UsageRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+        deviceid:
+          type: integer
+        linkid:
+          type: integer
+        bytes:
+          type: integer
+        timestamp:
+          type: string
+        network:
+          type: string
   securitySchemes:
     apikeyAuth:
       type: http

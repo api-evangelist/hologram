@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Hologram REST Cellular Links Plans API
+  title: Hologram REST Plans API
   description: REST API for the Hologram global cellular IoT connectivity platform. Manage devices and cellular links (SIMs), activate and pause SIMs, change data plans, query data and SMS usage, send SMS and cloud messages to devices, manage device tags, and read available data plans. All requests are authenticated with HTTP Basic auth using the username `apikey` and the API key as the password.
   termsOfService: https://www.hologram.io/terms/
   contact:
@@ -51,6 +51,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/PlanResponse'
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
   schemas:
     PlanListResponse:
       type: object
@@ -61,6 +80,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Plan'
+    PlanResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Plan'
     Plan:
       type: object
       properties:
@@ -78,32 +104,6 @@ components:
           type: integer
         carrier:
           type: string
-    PlanResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Plan'
-  parameters:
-    startafter:
-      name: startafter
-      in: query
-      description: Record id to paginate after.
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
   securitySchemes:
     apikeyAuth:
       type: http
