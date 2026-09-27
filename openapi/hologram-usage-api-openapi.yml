@@ -95,19 +95,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/UsageListResponse'
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
   schemas:
     UsageListResponse:
       type: object
@@ -139,6 +126,19 @@ components:
           type: string
         network:
           type: string
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
   securitySchemes:
     apikeyAuth:
       type: http

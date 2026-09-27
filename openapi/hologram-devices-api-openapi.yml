@@ -118,18 +118,6 @@ paths:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-    startafter:
-      name: startafter
-      in: query
-      description: Record id to paginate after.
-      schema:
-        type: integer
     orgid:
       name: orgid
       in: query
@@ -142,49 +130,19 @@ components:
       required: true
       schema:
         type: integer
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
   schemas:
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        orgid:
-          type: integer
-        devices:
-          type: array
-          items:
-            type: integer
-    DeviceResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Device'
-    DeviceListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        size:
-          type: integer
-        limit:
-          type: integer
-        continues:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        error:
-          type: string
     Device:
       type: object
       properties:
@@ -208,6 +166,48 @@ components:
             $ref: '#/components/schemas/Tag'
         links:
           type: object
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+    DeviceResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Device'
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        orgid:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: integer
+    DeviceListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
   securitySchemes:
     apikeyAuth:
       type: http

@@ -130,12 +130,6 @@ paths:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
     orgid:
       name: orgid
       in: query
@@ -148,16 +142,20 @@ components:
       required: true
       schema:
         type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
   schemas:
-    TagListResponse:
+    SuccessResponse:
       type: object
       properties:
         success:
           type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
+        error:
+          type: string
     Tag:
       type: object
       properties:
@@ -178,13 +176,15 @@ components:
           type: boolean
         data:
           $ref: '#/components/schemas/Tag'
-    SuccessResponse:
+    TagListResponse:
       type: object
       properties:
         success:
           type: boolean
-        error:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
   securitySchemes:
     apikeyAuth:
       type: http

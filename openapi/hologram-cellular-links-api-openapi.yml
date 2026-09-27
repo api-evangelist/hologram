@@ -190,7 +190,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
+  parameters:
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+    linkid:
+      name: linkid
+      in: path
+      required: true
+      schema:
+        type: integer
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
     CellularLinkResponse:
       type: object
       properties:
@@ -213,13 +245,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CellularLink'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        error:
-          type: string
     CellularLink:
       type: object
       properties:
@@ -243,31 +268,6 @@ components:
           type: string
         whenexpires:
           type: string
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-    startafter:
-      name: startafter
-      in: query
-      description: Record id to paginate after.
-      schema:
-        type: integer
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
-    linkid:
-      name: linkid
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     apikeyAuth:
       type: http

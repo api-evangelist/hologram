@@ -48,6 +48,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
+  parameters:
+    deviceid:
+      name: deviceid
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
     SuccessResponse:
       type: object
@@ -56,13 +63,6 @@ components:
           type: boolean
         error:
           type: string
-  parameters:
-    deviceid:
-      name: deviceid
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     apikeyAuth:
       type: http
