@@ -96,21 +96,6 @@ paths:
                 $ref: '#/components/schemas/UsageListResponse'
 components:
   schemas:
-    UsageListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        size:
-          type: integer
-        limit:
-          type: integer
-        continues:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageRecord'
     UsageRecord:
       type: object
       properties:
@@ -126,6 +111,21 @@ components:
           type: string
         network:
           type: string
+    UsageListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRecord'
   parameters:
     limit:
       name: limit

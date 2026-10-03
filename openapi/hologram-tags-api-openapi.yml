@@ -129,25 +129,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
-  parameters:
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
-    tagid:
-      name: tagid
-      in: path
-      required: true
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
   schemas:
     SuccessResponse:
       type: object
@@ -156,6 +137,15 @@ components:
           type: boolean
         error:
           type: string
+    TagListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
     Tag:
       type: object
       properties:
@@ -176,15 +166,25 @@ components:
           type: boolean
         data:
           $ref: '#/components/schemas/Tag'
-    TagListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    tagid:
+      name: tagid
+      in: path
+      required: true
+      schema:
+        type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
   securitySchemes:
     apikeyAuth:
       type: http

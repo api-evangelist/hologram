@@ -52,12 +52,6 @@ paths:
                 $ref: '#/components/schemas/PlanResponse'
 components:
   parameters:
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
     startafter:
       name: startafter
       in: query
@@ -70,7 +64,29 @@ components:
       description: Maximum number of records to return.
       schema:
         type: integer
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
   schemas:
+    PlanListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+    PlanResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Plan'
     Plan:
       type: object
       properties:
@@ -88,22 +104,6 @@ components:
           type: integer
         carrier:
           type: string
-    PlanListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Plan'
-    PlanResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Plan'
   securitySchemes:
     apikeyAuth:
       type: http
