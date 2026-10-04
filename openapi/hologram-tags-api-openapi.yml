@@ -130,6 +130,19 @@ paths:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
   schemas:
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        orgid:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: integer
     SuccessResponse:
       type: object
       properties:
@@ -146,19 +159,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        orgid:
-          type: integer
-        devices:
-          type: array
-          items:
-            type: integer
     TagResponse:
       type: object
       properties:
@@ -167,6 +167,12 @@ components:
         data:
           $ref: '#/components/schemas/Tag'
   parameters:
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
     limit:
       name: limit
       in: query
@@ -177,12 +183,6 @@ components:
       name: tagid
       in: path
       required: true
-      schema:
-        type: integer
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
       schema:
         type: integer
   securitySchemes:

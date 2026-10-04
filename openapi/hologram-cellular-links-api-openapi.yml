@@ -191,28 +191,13 @@ paths:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
   schemas:
-    CellularLinkListResponse:
+    SuccessResponse:
       type: object
       properties:
         success:
           type: boolean
-        size:
-          type: integer
-        limit:
-          type: integer
-        continues:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CellularLink'
-    CellularLinkResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/CellularLink'
+        error:
+          type: string
     CellularLink:
       type: object
       properties:
@@ -236,18 +221,33 @@ components:
           type: string
         whenexpires:
           type: string
-    SuccessResponse:
+    CellularLinkListResponse:
       type: object
       properties:
         success:
           type: boolean
-        error:
-          type: string
+        size:
+          type: integer
+        limit:
+          type: integer
+        continues:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CellularLink'
+    CellularLinkResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/CellularLink'
   parameters:
-    startafter:
-      name: startafter
+    orgid:
+      name: orgid
       in: query
-      description: Record id to paginate after.
+      description: Organization id to scope the request.
       schema:
         type: integer
     linkid:
@@ -262,10 +262,10 @@ components:
       description: Maximum number of records to return.
       schema:
         type: integer
-    orgid:
-      name: orgid
+    startafter:
+      name: startafter
       in: query
-      description: Organization id to scope the request.
+      description: Record id to paginate after.
       schema:
         type: integer
   securitySchemes:

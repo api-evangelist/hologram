@@ -117,39 +117,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
 components:
-  parameters:
-    startafter:
-      name: startafter
-      in: query
-      description: Record id to paginate after.
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-    deviceid:
-      name: deviceid
-      in: path
-      required: true
-      schema:
-        type: integer
-    orgid:
-      name: orgid
-      in: query
-      description: Organization id to scope the request.
-      schema:
-        type: integer
   schemas:
-    DeviceResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Device'
     DeviceListResponse:
       type: object
       properties:
@@ -178,6 +146,20 @@ components:
           type: array
           items:
             type: integer
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        error:
+          type: string
+    DeviceResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Device'
     Device:
       type: object
       properties:
@@ -201,13 +183,31 @@ components:
             $ref: '#/components/schemas/Tag'
         links:
           type: object
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        error:
-          type: string
+  parameters:
+    orgid:
+      name: orgid
+      in: query
+      description: Organization id to scope the request.
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+    deviceid:
+      name: deviceid
+      in: path
+      required: true
+      schema:
+        type: integer
+    startafter:
+      name: startafter
+      in: query
+      description: Record id to paginate after.
+      schema:
+        type: integer
   securitySchemes:
     apikeyAuth:
       type: http
