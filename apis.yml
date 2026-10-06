@@ -44,7 +44,7 @@ tags:
 - M2M
 - Machine-to-Machine
 created: '2026-06-21'
-modified: '2026-09-16'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: hologram:hologram-cellular-links-api
@@ -194,6 +194,8 @@ apis:
   - type: OpenCollection
     url: collections/hologram.opencollection.json
 common:
+- url: https://www.hologram.io/stories/
+  type: Blog
 - type: CapabilityMap
   url: capabilities/hologram-capability-edges.yml
   name: Hologram Business Capability Map
