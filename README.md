@@ -1,4 +1,4 @@
-# Hologram (hologram)
+# Hologram
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,161 +66,136 @@
 
 Hologram is a global cellular IoT connectivity platform providing eUICC SIMs that roam across 550+ carrier networks in 200+ countries. The Hologram REST API lets developers activate and manage SIMs and devices, query data and SMS usage, send SMS and cloud messages to devices, manage plans and tags, and open secure Spacebridge tunnels.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hologram/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hologram/refs/heads/main/apis.yml)
+**Areas:** IoT · Cellular · Connectivity · SIM · M2M · Machine-to-Machine
 
-## Tags
+## Hologram on APIs.io
 
-- IoT
-- Cellular
-- Connectivity
-- SIM
-- M2M
+Everything profiled for Hologram is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hologram/](https://apis.io/providers/hologram/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Hologram Cellular Links API](https://apis.io/apis/hologram/hologram-cellular-links-api/) — The Cellular Links API from Hologram — 6 operation(s) for cellular links.
+- [Hologram Devices API](https://apis.io/apis/hologram/hologram-devices-api/) — The Devices API from Hologram — 3 operation(s) for devices.
+- [Hologram Messaging API](https://apis.io/apis/hologram/hologram-messaging-api/) — The Messaging API from Hologram — 1 operation(s) for messaging.
+- [Hologram Plans API](https://apis.io/apis/hologram/hologram-plans-api/) — The Plans API from Hologram — 2 operation(s) for plans.
+- [Hologram SMS API](https://apis.io/apis/hologram/hologram-sms-api/) — The SMS API from Hologram — 1 operation(s) for sms.
+- [Hologram Tags API](https://apis.io/apis/hologram/hologram-tags-api/) — The Tags API from Hologram — 4 operation(s) for tags.
+- [Hologram Usage API](https://apis.io/apis/hologram/hologram-usage-api/) — The Usage API from Hologram — 3 operation(s) for usage.
+- [Hologram Webhooks API](https://apis.io/apis/hologram/hologram-webhooks-api/) — The Webhooks API from Hologram — 1 operation(s) for webhooks.
 
-## APIs
+### Published properties
 
-### Hologram Devices & SIMs API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List, retrieve, and update devices and their cellular links; activate (claim) single or bulk SIMs; pause/unpause data; change plans; and look up device names and locations.
+#### MCP servers (1)
 
-- **Human URL:** [https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [hologram](https://apis.io/servers/hologram/hologram/)
 
-- Devices
-- SIMs
-- Cellular Links
-- Activation
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Hologram Agentic Access](https://apis.io/agentic-access/hologram/hologram-agentic-access/)
 
-### Hologram Data Usage API
+#### Collections (9)
 
-Query cellular data usage as session records, daily, monthly, and billing-period summaries, plus SMS usage, scoped by organization, link, or tag.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://hologram.docs.apiary.io/](https://hologram.docs.apiary.io/)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
+- [Hologram REST API](https://apis.io/collections/hologram/open-hologram/)
+- [Hologram REST Cellular Links API](https://apis.io/collections/hologram/open-hologram-cellular-links-api/)
+- [Hologram REST Cellular Links Devices API](https://apis.io/collections/hologram/open-hologram-devices-api/)
+- [Hologram REST Cellular Links Messaging API](https://apis.io/collections/hologram/open-hologram-messaging-api/)
+- [Hologram REST Cellular Links Plans API](https://apis.io/collections/hologram/open-hologram-plans-api/)
+- [Hologram REST Cellular Links SMS API](https://apis.io/collections/hologram/open-hologram-sms-api/)
+- [Hologram REST Cellular Links Tags API](https://apis.io/collections/hologram/open-hologram-tags-api/)
+- [Hologram REST Cellular Links Usage API](https://apis.io/collections/hologram/open-hologram-usage-api/)
+- [Hologram REST Cellular Links Webhooks API](https://apis.io/collections/hologram/open-hologram-webhooks-api/)
 
-#### Tags
+#### Security (2)
 
-- Data Usage
-- Sessions
-- Billing
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Hologram Authentication](https://apis.io/security/hologram/hologram-authentication/)
+- [Hologram Domain Security](https://apis.io/security/hologram/hologram-domain-security/)
 
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Hologram SMS & Messaging API
+Published plans, tiers and prices.
 
-Send SMS to devices, deliver TCP/UDP cloud messages to devices, and push messages to the Hologram Data Engine via authenticated calls or per-device webhook GUIDs.
+- [Hologram Plans Pricing](https://apis.io/plans/hologram/hologram-plans-pricing/)
 
-- **Human URL:** [https://hologram.docs.apiary.io/](https://hologram.docs.apiary.io/)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- SMS
-- Messaging
-- Cloud Messages
+- [Hologram Rate Limits](https://apis.io/rate-limits/hologram/hologram-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Hologram Plans API
+- [Hologram Finops](https://apis.io/finops/hologram/hologram-finops/)
 
-List available data plans, retrieve a single plan, and read plan pricing used when activating or changing the plan on a SIM.
+## Where to find this API
 
-- **Human URL:** [https://hologram.docs.apiary.io/](https://hologram.docs.apiary.io/)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Plans
-- Pricing
-- Data Plans
-
-#### Properties
-
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Hologram Tags API
-
-Create, list, and delete device tags and link or unlink tags to one or many devices for fleet grouping and bulk operations.
-
-- **Human URL:** [https://hologram.docs.apiary.io/](https://hologram.docs.apiary.io/)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
-
-#### Tags
-
-- Tags
-- Organization
-- Grouping
-
-#### Properties
-
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Hologram Webhooks API
-
-Pre-authenticated per-device webhook endpoints that accept inbound messages addressed to a device by id and webhook GUID without an API key, for integrating external systems with the Hologram cloud.
-
-- **Human URL:** [https://hologram.docs.apiary.io/](https://hologram.docs.apiary.io/)
-- **Base URL:** `https://dashboard.hologram.io/api/1`
-
-#### Tags
-
-- Webhooks
-- Inbound
-- Device Messages
-
-#### Properties
-
-- [Documentation](https://docs.hologram.io/guides/rest-api/beginners-guide-to-the-hologram-rest-api)
-- [API Reference](https://hologram.docs.apiary.io/)
-- [OpenAPI](openapi/hologram-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/hologram.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hologram.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/hologram-io)
-- [LinkedIn](https://www.linkedin.com/company/hologramio)
 - [Website](https://www.hologram.io/)
 - [Documentation](https://docs.hologram.io/)
-- [Plans](plans/hologram-plans-pricing.yml)
-- [Rate Limits](rate-limits/hologram-rate-limits.yml)
-- [Fin Ops](finops/hologram-finops.yml)
+- [Blog](https://www.hologram.io/stories/)
+- [GitHub](https://github.com/hologram-io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 23.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 45.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 5.3 |
+
+**Agent readiness 20.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hologram/](https://apis.io/providers/hologram/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hologram: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hologram/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
